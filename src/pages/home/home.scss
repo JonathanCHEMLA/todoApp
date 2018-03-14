@@ -1,0 +1,15 @@
+
+
+
+page-home {
+  .done + .item-inner > .input-wrapper {
+    color: grey;
+    text-decoration: line-through;
+  }
+  .nbTaches {
+    font-size: 2em;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+}
+/* le > est obligatoire dans la ligne ci-dessous */

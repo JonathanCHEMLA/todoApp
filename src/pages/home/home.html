@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Tâches
+    </ion-title>
+    <ion-buttons end>
+      <span class="nbTaches">{{ taches.length }}</span>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div padding *ngIf="taches.length=== 0">
+    <h5 text-center>Aucune tâche pour le moment</h5>
+  </div>
+
+
+<ion-list>
+
+  <ion-item-sliding *ngFor="let tache of taches">
+    <ion-item>
+      <ion-label>{{ tache.titre }}</ion-label>
+      <ion-checkbox color="secondary"
+                    [(ngModel)]="tache.status"
+                    (ionChange)="saveDoneTasks()"
+                    [class.done]="tache.status"
+                    checked="{{ tache.status }}"></ion-checkbox><!-- class.done est une classe qui se crée lorsque le boutton est appuyé-->
+    </ion-item>
+    <ion-item-options side="right" (ionSwipe)="deleteTask(tache)">
+      <!-- prendre le lien https de hugo sur le git hub et le coller ici -->
+      <button ion-button (click)="deleteTask(tache)" color="danger" expandable
+              >Supprimer</button>
+    </ion-item-options>
+  </ion-item-sliding>
+  <ion-item *ngIf="active">
+
+    <ion-label><ion-icon name="add"></ion-icon></ion-label>
+    <ion-input name="titre" placeholder="Ajouter une tâche..."
+               [(ngModel)]="task.titre"
+               (keypress)="enterSave($event.keyCode)"
+               (ionBlur)="saveTask()" type="text">
+    </ion-input>
+
+  </ion-item>
+
+
+  <!-- si la tache est remplie on va créer une condition/ une propriete sur la classe, si la cdtion se valide. -->
+
+ <!-- key code est la touche pressee par l user-->
+          <!-- ionBlur c 'est la meme chose que l evenemnet change sur le input -->
+<!--
+  /* pour tester, voir ce que ca donne en l'affichant au format Json:
+  *   [deux accolades] task | json [deux accolades] mais ca n est pas obligatoire.
+  */
+  -->
+
+  </ion-list>
+
+</ion-content>
