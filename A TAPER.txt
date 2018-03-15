@@ -1,0 +1,3 @@
+npm install -g ionic@latest
+
+puis ionic serve -c -l
